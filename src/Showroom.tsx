@@ -4,9 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import supraShowroom from "./assets/upscale_toyota.png";
 import r34 from "./assets/nissan-r34-upscale.png";
-import bg from "./assets/showroom_bg.png";
-import { ChevronLeft } from "./components/chevron";
-import { ChevronRight } from "./components/chevron";
 import { AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -186,8 +183,8 @@ export function Showroom() {
     return (
         <section className="showroom-section" id="showroom" ref={sectionRef}>
             <AnimatePresence>
-                <div onClick={previousCar} className="arrowRight select-none flex justify-center items-center p-2 absolute left-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary) hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_left</span></div>
-                <div onClick={nextCar} className="arrowRight select-none flex justify-center items-center p-2 absolute right-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary) hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_right</span></div>
+                <div onClick={previousCar} className="arrowRight select-none flex justify-center items-center p-2 absolute left-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary)/50 hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_left</span></div>
+                <div onClick={nextCar} className="arrowRight select-none flex justify-center items-center p-2 absolute right-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary)/50 hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_right</span></div>
                 <motion.img
                     key={car.id}
                     initial={{

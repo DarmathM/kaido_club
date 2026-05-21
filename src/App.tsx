@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import Hero from "./Hero";
-import { Fleet } from "./Fleet";
 import { useEffect } from "react";
 import { Showroom } from "./Showroom";
 import { Gallery } from "./Gallery";

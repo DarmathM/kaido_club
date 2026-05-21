@@ -5,7 +5,7 @@ export function Nav() {
 
             {/* LEFT */}
             <div>
-                <img src={logo} alt="kaido_club_logo" className="w-[100px] aspect-square absolute left-6 top-[50%] transform-[translateY(-50%)]" />
+                <img src={logo} alt="kaido_club_logo" className="w-25 aspect-square absolute left-6 top-[50%] transform-[translateY(-50%)]" />
             </div>
 
             {/* CENTER */}
