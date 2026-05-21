@@ -6,7 +6,7 @@
   --muted: hsl(0, 0%, 75%);
   --bg: hsl(0, 0%, 0%);
   --bg-muted: hsl(from var(--bg) h s calc(l + 2));
-  --border-muted:hsl(from var(--bg) h s calc(l + 5)); 
+  --border-muted: hsl(from var(--bg) h s calc(l + 5));
   --ink: hsl(0, 0%, 5%);
   --border: #e5e4e7;
   --primary: hsl(0, 100%, 36%);
@@ -17,7 +17,7 @@
 
   --sans: "Rajdhani", 'Segoe UI', Roboto, sans-serif;
 
-  
+
   letter-spacing: 0.18px;
   color: var(--text);
   font-synthesis: none;
@@ -36,7 +36,8 @@
   --font-Rajdhani: "Rajdhani", sans-serif;
 }
 
-html, body{
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -56,22 +57,22 @@ button {
   font-weight: 500;
 }
 
-a{
+a {
   text-decoration: none;
-  
+
 }
 
-p{
+p {
   font-size: initial;
-  
+
 }
 
 h1,
 h2 {
   font-family: var(--font-obitron);
   font-weight: 500;
-  
-  
+
+
 }
 
 
@@ -87,28 +88,27 @@ h1 {
 
 }
 
-.material-symbols-outlined{
+.material-symbols-outlined {
   padding: 0;
   margin: 0;
   font-size: inherit;
   color: inherit;
-
-  
 }
 
 h2 {
-  
+
   line-height: 118%;
   letter-spacing: -0.24px;
 }
 
+
 .primary-btn {
-  @apply bg-(--primary) uppercase text-(--text) cursor-pointer ;
-  clip-path: polygon(90% 0, 100% 30%, 100% 85%, 100% 100%, 10% 100%, 0 65%, 0 0);
+  @apply bg-(--primary) uppercase text-(--text) cursor-pointer;
+
   transition: transform 0.3s ease;
   border: 1px solid var(--primary-light);
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
   }
 }
@@ -138,13 +138,11 @@ h2 {
   z-index: -4;
   pointer-events: none;
   background:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.46) 42%,
       rgba(0, 0, 0, 0.82) 74%,
-      hsl(240, 100%, 0%) 100%
-    );
+      hsl(240, 100%, 0%) 100%);
 }
 
 .fleet-section {
@@ -160,18 +158,17 @@ h2 {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       hsl(240, 100%, 0%) 0%,
       rgba(0, 0, 0, 0.64) 52%,
-      rgba(0, 0, 0, 0) 100%
-    );
+      rgba(0, 0, 0, 0) 100%);
 }
 
-.card{
+.card {
   overflow: hidden;
 }
-.card::after{
+
+.card::after {
   content: "";
   inset: 0;
   background: linear-gradient(-45deg, transparent 40%, hsla(0, 0%, 100%, 0.90) 50%, transparent 60%);
@@ -182,9 +179,9 @@ h2 {
   transition: transform 0.3s;
 }
 
-.card:hover::after{
+.card:hover::after {
   transform: translateX(100%);
-  
+
 }
 
 .showroom-section {
@@ -198,7 +195,7 @@ h2 {
   perspective: 1400px;
   color: hsl(220, 18%, 10%);
   /*background: #f7f7f5;*/
- 
+
 }
 
 
@@ -238,20 +235,22 @@ h2 {
 
 
 .showroom-shell {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: 2;
   display: grid;
-  position: sticky;
   top: 0;
-  min-height: 100vh;
-  padding: clamp(56px, 7vh, 78px) clamp(20px, 4.8vw, 76px) clamp(26px, 5vh, 52px);
-  transform-style: preserve-3d;
+
+  /*padding: clamp(56px, 7vh, 78px) clamp(20px, 4.8vw, 76px) clamp(26px, 5vh, 52px);*/
+  
+
 }
 
 
 
 .showroom-copy {
-  position: relative;
+  
   z-index: 2;
   display: grid;
   align-self: end;
@@ -334,7 +333,7 @@ h2 {
   z-index: 0;
   width: 100%;
   height: 100%;
-  
+
   object-fit: cover;
   object-position: center;
   image-rendering: auto;
@@ -344,7 +343,6 @@ h2 {
 
 .showroom-details {
   position: absolute;
-  top: 50%;
   right: clamp(20px, 4.8vw, 76px);
   z-index: 2;
   display: grid;
@@ -353,7 +351,7 @@ h2 {
   width: min(220px, 22vw);
   border: 1px solid rgba(18, 24, 34, 0.12);
   background: rgba(18, 24, 34, 0.12);
-  transform: translateY(-50%) translateZ(110px);
+
 }
 
 .showroom-details div {
@@ -381,18 +379,15 @@ h2 {
 
 .showroom-price {
   position: absolute;
-  right: clamp(20px, 4.8vw, 76px);
-  bottom: clamp(26px, 5vh, 52px);
   z-index: 2;
   display: grid;
   gap: 4px;
   justify-items: end;
   color: hsl(220, 18%, 10%);
-  transform: translateZ(82px);
+
 }
 
 .showroom-price span {
-  color: hsl(218, 13%, 42%);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.24em;
@@ -401,7 +396,7 @@ h2 {
 
 .showroom-price strong {
   font-family: var(--font-obitron);
-  font-size: clamp(0.92rem, 1.3vw, 1.18rem);
+  font-size: clamp(0.92rem, 4vw, 2.2rem);
   font-weight: 800;
 }
 
@@ -448,7 +443,7 @@ h2 {
   }
 
   .showroom-car {
-    
+
     height: 100%;
     object-position: 54% center;
   }
@@ -490,6 +485,7 @@ h2 {
   }
 }
 
+/*
 .japanese-fixed-bg {
   --parallax-y: 0px;
   --parallax-soft-y: 0px;
@@ -502,7 +498,7 @@ h2 {
     radial-gradient(circle at 78% 18%, rgba(179, 0, 0, 0.22), transparent 30%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 22px);
   
-}
+}*/
 
 
 
@@ -613,7 +609,7 @@ h2 {
   }
 
   .showroom-shell {
-   
+
     display: grid;
     grid-template-rows: auto minmax(180px, 1fr) auto;
     padding: 96px 18px 18px;
@@ -662,7 +658,7 @@ h2 {
   .showroom-car {
     --showroom-car-x: -50%;
     height: auto;
-    bottom:0;
+    bottom: 0;
     position: absolute;
     object-fit: contain;
     object-position: center;

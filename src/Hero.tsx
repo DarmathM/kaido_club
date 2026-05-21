@@ -10,10 +10,10 @@ function Hero() {
             </video>
             
             <div className="flex flex-col gap-8 mt-8">
-                <div className="bg-(--primary) flex uppercase px-5 py-1 self-start tracking-[5px] font-bold border-l-4 border-(--primary-light) text-[0.7rem]">Tokyo's Premier JDM Experience</div>
+                <div className="flex items-center gap-2  uppercase px-5 py-1 self-start tracking-[5px] font-bold text-[0.7rem]"><div className="border-t-2 border-(--primary) w-5"></div>Tokyo's Premier<p className="text-(--primary) text-[0.2rem]">JDM Experience</p></div>
                 <h1 className="flex flex-col gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-orbitron tracking-tighter uppercase">
                     <span className="block text-5xl md:text-7xl">Tokyo </span>
-                    <span className="block text-5xl md:text-7xl lg:text-8xl">UnderGround </span>
+                    <span className="block text-5xl md:text-7xl lg:text-8xl text-(--primary) font-bold underground">UnderGround </span>
                     <span className="block text-5xl md:text-7xl">Experience</span>
                 </h1>
                 <div className="pl-6 border-l-4 border-(--primary)">

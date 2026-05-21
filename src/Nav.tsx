@@ -1,10 +1,11 @@
+import logo from "./assets/kaido_club_logo_.png";
 export function Nav() {
     return (
-        <nav className="grid grid-cols-3 items-center px-10 py-5 absolute top-0 left-0 w-full bg-(--ink) z-90">
+        <nav className="grid grid-cols-3 items-center px-10 py-5 absolute top-0 left-0 w-full bg-(--ink) z-90 ">
 
             {/* LEFT */}
             <div>
-                Logo
+                <img src={logo} alt="kaido_club_logo" className="w-[100px] aspect-square absolute left-6 top-[50%] transform-[translateY(-50%)]" />
             </div>
 
             {/* CENTER */}

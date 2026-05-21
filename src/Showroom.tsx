@@ -1,11 +1,63 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import supraShowroom from "./assets/upscale_toyota.png";
+import r34 from "./assets/nissan-r34-upscale.png";
+import bg from "./assets/showroom_bg.png";
+import { ChevronLeft } from "./components/chevron";
+import { ChevronRight } from "./components/chevron";
+import { AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+const fleet = [
+    {
+        id: 1,
+        url: supraShowroom,
+        name: "Supra mk4",
+        price: "40.000",
+        engine: "2JZ-GTE",
+        config: "gloss black",
+    },
+    {
+        id: 2,
+        url: r34,
+        name: "Skyline r34",
+        price: "30.000",
+        engine: "Skyline r34",
+        config: "Brian",
+    }
+]
+
 export function Showroom() {
+    const [currentCar, setCurrentCar] = useState(0);
+    const car = fleet[currentCar];
+
+    function nextCar() {
+
+        setCurrentCar((prev) =>
+
+            prev === fleet.length - 1
+                ? 0
+                : prev + 1
+
+        );
+
+    }
+    function previousCar() {
+
+        setCurrentCar((prev) =>
+
+            prev === 0
+                ? fleet.length - 1
+                : prev - 1
+
+        );
+
+    }
+
     const sectionRef = useRef<HTMLElement | null>(null);
     const backgroundRef = useRef<HTMLDivElement | null>(null);
     const carRef = useRef<HTMLImageElement | null>(null);
@@ -38,7 +90,7 @@ export function Showroom() {
 
         const ctx = gsap.context(() => {
             gsap.set([copy.children, details.children], { opacity: 0, y: 48 });
-            gsap.set(car, { opacity: 0, y:48 });
+            gsap.set(car, { opacity: 0 });
 
             const timeline = gsap.timeline({
                 scrollTrigger: {
@@ -50,7 +102,7 @@ export function Showroom() {
             });
 
             timeline
-                .to(car, { opacity: 1, duration: 1.5, y:0, ease: "power3.in" }, 0.2)
+                .to(car, { opacity: 1, duration: 1.5, y: 0, ease: "power3.in" }, 0)
                 .to(copy.children, { opacity: 1, y: 0, stagger: 0.5, duration: 0.9, ease: "power3.out" }, 0.90)
                 .to(details.children, { opacity: 1, y: 0, stagger: 1, duration: 0.8, ease: "power3.out" }, 0.28);
 
@@ -64,7 +116,7 @@ export function Showroom() {
                 },
             });
 
-            
+
 
         }, section);
 
@@ -93,10 +145,10 @@ export function Showroom() {
             state.currentBgY += (state.targetBgY - state.currentBgY) * 0.08;
             state.currentFloorY += (state.targetFloorY - state.currentFloorY) * 0.08;
 
-            
+
             background.style.transform = `translate3d(0, ${state.currentBgY}px, 0)`;
             floor.style.transform = `perspective(900px) rotateX(62deg) translate3d(0, ${state.currentFloorY}px, 0)`;
-            
+
 
             const settled =
                 Math.abs(state.targetCarY - state.currentCarY) < 0.08 &&
@@ -128,51 +180,100 @@ export function Showroom() {
             ctx.revert();
         };
     }, []);
-   
-    
+
+
 
     return (
         <section className="showroom-section" id="showroom" ref={sectionRef}>
-            <img className="showroom-car" src={supraShowroom} alt="Black Toyota Supra MK4 in a white luxury showroom" ref={carRef} />
+            <AnimatePresence>
+                <div onClick={previousCar} className="arrowRight select-none flex justify-center items-center p-2 absolute left-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary) hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_left</span></div>
+                <div onClick={nextCar} className="arrowRight select-none flex justify-center items-center p-2 absolute right-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary) hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_right</span></div>
+                <motion.img
+                    key={car.id}
+                    initial={{
+                        opacity: 0,
+                        scale: 1.05,
+                        filter: "blur(5px)"
+                    }}
 
-            <div className="showroom-ambient" aria-hidden="true" ref={backgroundRef}>
-                <span className="showroom-horizon" />
-            </div>
-            <div className="showroom-floor" ref={floorRef} aria-hidden="true" />
+                    animate={{
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)"
+                    }}
 
-            <div className="showroom-shell">
-                <div className="showroom-copy" ref={copyRef}>
-                    <span className="showroom-kicker text-(--primary) uppercase">Toyota Heritage Program</span>
-                    <h2>Supra MK4</h2>
-                    <p>
-                        The 2JZ heart of Tokyo Drift. Single turbo built, street-ready legend.
-                    </p>
-                    <div className="showroom-actions">
-                        <button className="showroom-primary">Select</button>
-                        <button className="showroom-secondary">Details</button>
+                    exit={{
+                        opacity: 0,
+                        filter: "blur(5px)"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeInOut",
+                    }}
+                    className="showroom-car" src={car.url} alt="Black Toyota Supra MK4 in a white luxury showroom" ref={carRef} />
+                <div className="showroom-ambient" aria-hidden="true" ref={backgroundRef}>
+                    <span className="showroom-horizon" />
+                </div>
+                <div className="showroom-floor" ref={floorRef} aria-hidden="true" />
+
+                <div className="showroom-shell">
+                    <div className="showroom-copy absolute left-10 top-[10%]" ref={copyRef}>
+                        <span className="showroom-kicker text-(--primary) uppercase">Toyota Heritage Program</span>
+                        <h2>{car.name}</h2>
+                        <p>
+                            The 2JZ heart of Tokyo Drift. Twin turbo built, street-ready legend.
+                        </p>
+                        <div className="showroom-actions">
+                            <button className="showroom-primary">Select</button>
+                            <button className="showroom-secondary">Details</button>
+                        </div>
+                    </div>
+
+                    <div className="showroom-details absolute top-[10%] right-0" ref={detailsRef} >
+                        <div>
+                            <span>01</span>
+                            <strong>{car.config}</strong>
+                        </div>
+                        <div>
+                            <span>02</span>
+                            <strong>{car.engine}</strong>
+                        </div>
+                        <div>
+                            <span>03</span>
+                            <strong>Grand Touring</strong>
+                        </div>
+                    </div>
+
+                    <div className="showroom-price flex flex-col items-center justify-center absolute bottom-[15%] right-[50%] transform-[translateX(50%)] " aria-label="Starting price">
+                        <motion.div
+                            key={car.id}
+                            initial={{
+                                opacity: 0,
+                                y: 200,
+
+                            }}
+
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+
+
+                            }}
+
+                            exit={{
+                                opacity: 0,
+
+                            }}
+                            transition={{
+                                duration: 0.4,
+                                ease: "easeInOut",
+                            }}>
+                            <span className="block w-full text-center text-(--ink)">From</span>
+                            <strong className="text-(--primary) text-7xl">¥ {car.price}</strong>
+                        </motion.div>
                     </div>
                 </div>
-
-                <div className="showroom-details" ref={detailsRef} >
-                    <div>
-                        <span>01</span>
-                        <strong>Gloss Black</strong>
-                    </div>
-                    <div>
-                        <span>02</span>
-                        <strong>2JZ-GTE</strong>
-                    </div>
-                    <div>
-                        <span>03</span>
-                        <strong>Grand Touring</strong>
-                    </div>
-                </div>
-
-                <div className="showroom-price" aria-label="Starting price">
-                    <span>From</span>
-                    <strong className="text-(--primary)">¥40.000</strong>
-                </div>
-            </div>
+            </AnimatePresence>
         </section>
     );
 }

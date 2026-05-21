@@ -58,7 +58,6 @@ function App() {
         <Nav />
         <Hero />
         <Showroom/>
-        <Fleet/>
         <Gallery/>
         
         
