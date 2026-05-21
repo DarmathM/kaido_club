@@ -3,15 +3,18 @@
 
 :root {
   --text: hsl(0, 0%, 95%);
+  --light-contrast:light-dark(hsla(240,5%,70%,.148),hsla(240,2%,43%,.228));
   --muted: hsl(0, 0%, 75%);
   --bg: hsl(0, 0%, 0%);
   --bg-muted: hsl(from var(--bg) h s calc(l + 2));
   --border-muted: hsl(from var(--bg) h s calc(l + 5));
   --ink: hsl(0, 0%, 5%);
   --border: #e5e4e7;
-  --primary: hsl(0, 100%, 36%);
+  --primary: hsl(0, 78%, 42%);;
   --primary-light: hsl(from var(--primary) h s calc(l + 25));
   --social-bg: rgba(244, 243, 236, 0.5);
+  --fade-bg: linear-gradient(rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.8) 8.1%,rgba(0,0,0,0.8) 15.5%,rgba(0,0,0,0.8) 22.5%,rgba(0,0,0,0.78) 29%,rgba(0,0,0,0.73) 35.3%,rgba(0,0,0,0.67) 41.2%,rgba(0,0,0,0.6) 47.1%,rgba(0,0,0,0.52) 52.9%,rgba(0,0,0,0.44) 58.8%,rgba(0,0,0,0.33) 64.7%,rgba(0,0,0,0.22) 71%,rgba(0,0,0,0.12) 77.5%,rgba(0,0,0,0.05) 84.5%,rgba(0,0,0,0.01) 91.9%,rgba(0,0,0,0) 100%);
+
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -41,12 +44,20 @@ body {
   scroll-behavior: smooth;
 }
 
+#root{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
 
 
 body {
+  position: relative;
   margin: 0;
   overflow-x: hidden;
-  background: hsl(240, 100%, 0%);
 
 }
 
@@ -115,14 +126,7 @@ h2 {
 
 
 
-.site-content {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  gap: 150px;
-  z-index: 1;
-  overflow-x: hidden;
-}
+
 
 .hero-section {
   isolation: isolate;
@@ -189,7 +193,6 @@ h2 {
   --showroom-car-x: 0;
   position: relative;
   min-height: 130vh;
-  margin-block: -150px;
   overflow: hidden;
   isolation: isolate;
   perspective: 1400px;
@@ -213,13 +216,10 @@ h2 {
 
 .showroom-section::before {
   top: 0;
-  background: linear-gradient(to bottom, hsl(240, 100%, 0%), rgba(255, 255, 255, 0) 74%);
+background: linear-gradient(to bottom, hsl(200, 100%, 0%) 20%, rgba(255, 255, 255, 0) 70%);
 }
 
-.showroom-section::after {
-  bottom: 0;
-  background: linear-gradient(to top, hsl(240, 100%, 0%), rgba(255, 255, 255, 0) 74%);
-}
+
 
 
 
@@ -483,116 +483,6 @@ h2 {
     right: 24px;
     bottom: 28px;
   }
-}
-
-/*
-.japanese-fixed-bg {
-  --parallax-y: 0px;
-  --parallax-soft-y: 0px;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 78% 18%, rgba(179, 0, 0, 0.22), transparent 30%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 22px);
-  
-}*/
-
-
-
-
-
-.mark {
-  --mark-parallax: 1;
-  --mark-rotate: -8deg;
-  position: absolute;
-  display: block;
-  font-family: var(--font-obitron);
-  font-size: clamp(5rem, 12vw, 13rem);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.2);
-  text-transform: uppercase;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.36);
-  text-shadow:
-    7px 0 0 rgba(0, 0, 0, 0.85),
-    -5px 2px 0 rgba(0, 0, 0, 0.82),
-    0 16px 18px rgba(0, 0, 0, 0.95);
-  transform: translate3d(0, calc(var(--parallax-y) * var(--mark-parallax)), 0) rotate(var(--mark-rotate));
-  filter: contrast(1.45);
-  will-change: transform;
-}
-
-.mark::before,
-.mark::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.mark::before {
-  color: rgba(255, 255, 255, 0.3);
-  clip-path: polygon(0 7%, 100% 0, 100% 13%, 0 21%, 0 31%, 100% 22%, 100% 33%, 0 42%, 0 57%, 100% 49%, 100% 61%, 0 71%, 0 86%, 100% 78%, 100% 88%, 0 100%);
-  transform: translate(-8px, 5px) skewX(-8deg);
-}
-
-.mark::after {
-  color: transparent;
-  -webkit-text-stroke: 3px rgba(255, 255, 255, 0.22);
-  clip-path: polygon(0 0, 100% 8%, 100% 18%, 0 11%, 0 35%, 100% 28%, 100% 40%, 0 49%, 0 65%, 100% 58%, 100% 70%, 0 80%, 0 93%, 100% 84%, 100% 100%, 0 100%);
-  transform: translate(10px, -4px);
-}
-
-.mark-red {
-  color: rgba(185, 0, 0, 0.42);
-  -webkit-text-stroke-color: rgba(255, 30, 18, 0.52);
-  text-shadow:
-    6px 0 0 rgba(0, 0, 0, 0.9),
-    -4px 3px 0 rgba(0, 0, 0, 0.82),
-    0 0 24px rgba(179, 0, 0, 0.28);
-}
-
-.mark-hero {
-  --mark-parallax: 0.75;
-  --mark-rotate: -8deg;
-  top: 8%;
-  left: 4%;
-}
-
-.mark-right {
-  --mark-parallax: 1.22;
-  --mark-rotate: 8deg;
-  top: 17%;
-  right: -5%;
-}
-
-.mark-left {
-  --mark-parallax: 0.95;
-  --mark-rotate: -14deg;
-  top: 43%;
-  left: -4%;
-}
-
-.mark-small {
-  font-size: clamp(3.4rem, 8vw, 8rem);
-}
-
-.mark-bottom {
-  --mark-parallax: 1.08;
-  --mark-rotate: -6deg;
-  right: 8%;
-  bottom: 10%;
-}
-
-.mark-low {
-  --mark-parallax: 1.38;
-  --mark-rotate: 7deg;
-  left: 12%;
-  bottom: 4%;
 }
 
 
