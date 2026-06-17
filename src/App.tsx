@@ -4,6 +4,8 @@ import { Showroom } from "./Showroom";
 import { Gallery } from "./Gallery";
 import { Sidebar } from "./components/SideBar";
 import { useState } from "react";
+import { Contact } from "./Contact";
+import { CarTours } from "./Car-tours";
 
 
 
@@ -17,7 +19,9 @@ function App() {
         
         <Hero />
         <Showroom />
+        <CarTours/>
         <Gallery />
+        <Contact/>
 
     </>
   );

@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
 import supraShowroom from "./assets/upscale_toyota.png";
 import r34 from "./assets/nissan-r34-upscale.png";
+import { desc } from "framer-motion/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const fleet = [
         price: "40.000",
         engine: "2JZ-GTE",
         config: "gloss black",
+        desc: "The 2JZ heart of Tokyo Drift. Twin turbo built, street-ready legend.",
     },
     {
         id: 2,
@@ -24,6 +26,7 @@ const fleet = [
         price: "30.000",
         engine: "Skyline r34",
         config: "Brian",
+        desc: "RB26 Godzilla Legend",
     }
 ]
 
@@ -102,6 +105,8 @@ export function Showroom() {
 
     return (
         <section className="showroom-section" id="showroom" ref={sectionRef}>
+            <div className="absolute z-50 bottom-0 left-0 w-full h-75 bg-[linear-gradient(to_top,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.8)_8.1%,rgba(0,0,0,0.8)_15.5%,rgba(0,0,0,0.8)_22.5%,rgba(0,0,0,0.78)_29%,rgba(0,0,0,0.73)_35.3%,rgba(0,0,0,0.67)_41.2%,rgba(0,0,0,0.6)_47.1%,rgba(0,0,0,0.52)_52.9%,rgba(0,0,0,0.44)_58.8%,rgba(0,0,0,0.33)_64.7%,rgba(0,0,0,0.22)_71%,rgba(0,0,0,0.12)_77.5%,rgba(0,0,0,0.05)_84.5%,rgba(0,0,0,0.01)_91.9%,rgba(0,0,0,0)_100%)]"></div>
+
 
             <div onClick={previousCar} className="arrowRight select-none flex justify-center items-center p-2 absolute left-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary)/50 hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_left</span></div>
             <div onClick={nextCar} className="arrowRight select-none flex justify-center items-center p-2 absolute right-[5%] top-2/4 -translate-y-1/2 rounded-full border-(--primary)/50 backdrop-blur-md border-2 sm:text-2xl lg:text-5xl cursor-pointer z-10 text-(--primary)/50 hover:text-white hover:border-white transition-all duration-200"><span className="material-symbols-outlined">chevron_right</span></div>
@@ -161,7 +166,7 @@ export function Showroom() {
                         <span className="showroom-kicker text-(--primary) uppercase">Showroom</span>
                         <h2>{car.name}</h2>
                         <p>
-                            The 2JZ heart of Tokyo Drift. Twin turbo built, street-ready legend.
+                            {car.desc}
                         </p>
                         <div className="showroom-actions">
                             <button className="showroom-primary">Select</button>

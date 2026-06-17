@@ -5,11 +5,12 @@
   --text: hsl(0, 0%, 95%);
   --light-contrast:light-dark(hsla(240,5%,70%,.148),hsla(240,2%,43%,.228));
   --muted: hsl(0, 0%, 75%);
-  --bg: hsl(0, 0%, 0%);
+  --bg: hsl(0, 0%, 3%);
   --bg-muted: hsl(from var(--bg) h s calc(l + 2));
   --border-muted: hsl(from var(--bg) h s calc(l + 5));
   --ink: hsl(0, 0%, 5%);
   --border: #e5e4e7;
+  --bg-white: #F8F6F1;
   --primary: hsl(0, 78%, 42%);;
   --primary-light: hsl(from var(--primary) h s calc(l + 25));
   --social-bg: rgba(244, 243, 236, 0.5);
@@ -48,8 +49,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  
-  
 }
 
 
@@ -58,6 +57,7 @@ body {
   position: relative;
   margin: 0;
   overflow-x: hidden;
+  background: var(bg-white);
 
 }
 
@@ -192,7 +192,7 @@ h2 {
   --showroom-line: 0%;
   --showroom-car-x: 0;
   position: relative;
-  min-height: 130vh;
+  min-height: 120vh;
   overflow: hidden;
   isolation: isolate;
   perspective: 1400px;
