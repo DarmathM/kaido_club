@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
 import supraShowroom from "./assets/upscale_toyota.png";
 import r34 from "./assets/nissan-r34-upscale.png";
-import { desc } from "framer-motion/client";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import showroom from "./assets/showroom_bg.png";
+
 
 const timeSlots = ["20:00", "21:00"];
 const cars = ["Nissan Skyline R34", "Toyota Supra MK4"];
