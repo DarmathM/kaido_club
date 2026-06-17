@@ -25,9 +25,9 @@ export function Nav({onMenuClick}: NavProps) {
 
             {/* RIGHT */}
             <div className="flex justify-end">
-                <button className="primary-btn px-8 py-1 text-[0.8rem]">
+                <a href="#contact" className="primary-btn px-8 py-1 text-[0.8rem]">
                     Book Now
-                </button>
+                </a>
             </div>
         </nav>
     );
